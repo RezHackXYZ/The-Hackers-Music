@@ -3,6 +3,7 @@
 </script>
 
 <div id="root">
+    <input type="checkbox" id="checkbox" />
 	<h1 id="name">{props.name}</h1>
 </div>
 
@@ -15,7 +16,16 @@
 		border-radius: 5px;
 		margin: 5px;
         width: fit-content;
+
+        display: flex;
 	}
+    #checkbox {
+        margin-right: 5px;
+		align-self: center;
+        width: 25px;
+        height: 25px;
+    }
+
 	#name {
 		margin: 0;
 		align-self: center;
