@@ -1,11 +1,18 @@
+<script>
+	import { CurrentSong} from "../js/logic.js";
+
+</script>
+
+<div id="player" style="display:none;"></div>
+
 <div id="root">
 	<div id="holder">
 		<img
-			src="https://hc-cdn.hel1.your-objectstorage.com/s/v3/b9231b94a8827548ab6c400c890c63b82fbf2272_image.png"
+			src={CurrentSong.img}
 			alt="music cover"
 			id="img"
 		/>
-		<h1 id="nameofsong">NEXT!</h1>
+		<h1 id="nameofsong">{CurrentSong.name}</h1>
 	</div>
 	<div id="controlls">
 		<button aria-label="play song" id="back">
@@ -46,6 +53,8 @@
 			>
 		</button>
 	</div>
+
+	<div id="player"></div>
 </div>
 
 <style>
@@ -77,7 +86,7 @@
 
 	#nameofsong {
 		position: absolute;
-		background-color: #292929d0;
+		background-color: #131313e8;
 		border: 5px solid #292929f8;
 		width: 600px;
 		border-radius: 20px;

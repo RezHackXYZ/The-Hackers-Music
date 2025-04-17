@@ -4,7 +4,7 @@
 </script>
 
 <div id="root">
-	<h1>The Hackers Music - The Ultimate Music Player!</h1>
+	<h1>The Hackers Music</h1>
 	<div id="music"><Player /><List /></div>
 </div>
 

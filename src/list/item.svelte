@@ -1,4 +1,6 @@
 <script>
+	import { PlaySongFromList } from "../js/logic.js";
+
 	let props = $props();
 </script>
 
@@ -8,7 +10,10 @@
 		<h1 id="name">{props.name}</h1>
 	</div>
 	<div>
-		<button aria-label="play song" id="play"
+		<button
+			on:click={PlaySongFromList(props.id, props.name, props.image)}
+			aria-label="play song"
+			id="play"
 			><svg
 				xmlns="http://www.w3.org/2000/svg"
 				height="30px"
@@ -53,10 +58,16 @@
 	}
 
 	#play {
-        border-radius: 100%;
-        height: 50px;
-        width: 50px;
-        border: 2px solid #292929;
+		border-radius: 100%;
+		align-self: center;
+		height: 45px;
+		width: 45px;
+		border: 2px solid #292929;
 		background-color: #131313;
+		transition: all 0.1s;
+	}
+
+	#play:hover {
+		transform: scale(1.05);
 	}
 </style>
