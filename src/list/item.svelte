@@ -6,12 +6,14 @@
 
 <div id="root">
 	<div id="info">
-		<img src={props.image} id="img" alt="Music Logo" />
+		<img src="https://img.youtube.com/vi/{props.id}/maxresdefault.jpg" id="img" alt="Music Logo" />
 		<h1 id="name">{props.name}</h1>
 	</div>
 	<div>
 		<button
-			on:click={PlaySongFromList(props.id, props.name, props.image)}
+			onclick={() => {
+				PlaySongFromList(props.id, props.name, props.image);
+			}}
 			aria-label="play song"
 			id="play"
 			><svg
@@ -49,6 +51,8 @@
 		width: 50px;
 		height: 50px;
 		border-radius: 5px;
+		object-fit: cover;
+		object-position: center;
 	}
 
 	#name {

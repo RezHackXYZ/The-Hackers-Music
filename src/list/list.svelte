@@ -7,7 +7,7 @@
 <div id="root">
 	<div id="items">
 		{#each songs as song}
-			<Item name={song.Name} image={song.SongImg} id={song.YoutubeVidId} />
+			<Item name={song.Name} id={song.YoutubeVidId} />
 		{/each}
 	</div>
 </div>
