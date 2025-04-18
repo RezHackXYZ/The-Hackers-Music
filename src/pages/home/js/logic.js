@@ -1,5 +1,5 @@
 import { CurrentSong } from "./data.svelte.js";
-import data from "./data.json" assert { type: "json" };
+let data = JSON.parse(localStorage.getItem("songs"));
 export let songs = data;
 
 let player;
