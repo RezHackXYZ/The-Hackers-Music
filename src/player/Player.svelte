@@ -68,7 +68,7 @@
 
 	#img {
 		height: 400px;
-		width: 400px;
+		width: 380px;
 		border-radius: 5px;
 		border: 10px solid #292929;
 		object-fit: cover;

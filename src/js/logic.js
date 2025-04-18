@@ -1,9 +1,37 @@
 import { CurrentSong } from "./data.svelte.js";
-import { onMount } from "svelte";
 import data from "./data.json" assert { type: "json" };
 export let songs = data;
 
 let player;
+
+export async function getYouTubeTitle(id) {
+	try {
+		const url = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`;
+		const response = await fetch(url);
+		if (!response.ok) throw new Error("Invalid video or unavailable");
+		const data = await response.json();
+		return data.title;
+	} catch (error) {
+		console.error("Error fetching title:", error);
+		return null;
+	}
+}
+
+let i = 0;
+
+
+function NextSong() {
+	for (i = 0; i < songs.length; i++) {
+		if (songs[i] == CurrentSong.id) {
+			if (i == songs.length - 1) {
+				PlaySongFromList(songs[0]);
+			} else {
+				PlaySongFromList(songs[i + 1]);
+			}
+			break;
+		}
+	}
+}
 
 function playsong(id) {
 	player.loadVideoById(id);
@@ -30,16 +58,25 @@ window.onYouTubeIframeAPIReady = () => {
 			onReady: (event) => {
 				event.target.playVideo();
 			},
+			onStateChange: onPlayerStateChange,
 		},
 	});
 };
 
-export function PlaySongFromList(id, name, img) {
+export function PlaySongFromList(id) {
 	CurrentSong.id = id;
-	CurrentSong.name = name;
-	CurrentSong.img = img;
+	getYouTubeTitle(id).then((title) => {
+		CurrentSong.name = title;
+	});
 	CurrentSong.Playing = true;
 	playsong(id);
+}
+
+function onPlayerStateChange(event) {
+	// @ts-ignore
+	if (event.data === YT.PlayerState.ENDED) {
+		NextSong();
+	}
 }
 
 export function PauseOrPlay() {
@@ -51,14 +88,3 @@ export function PauseOrPlay() {
 		CurrentSong.Playing = true;
 	}
 }
-
-
-
-/*const videoId = 'dQw4w9WgXcQ';
-const url = `https://www.youtube.com/watch?v=${videoId}`;&#8203;:contentReference[oaicite:13]{index=13}
-
-:contentReference[oaicite:14]{index=14}
-  .then(response => response.json())
-  .then(data => console.log(data.title))
-  .catch(error => console.error('Error fetching video title:', error));
-*/

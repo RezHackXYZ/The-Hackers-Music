@@ -7,7 +7,7 @@
 <div id="root">
 	<div id="items">
 		{#each songs as song}
-			<Item name={song.Name} id={song.YoutubeVidId} />
+			<Item id={song} />
 		{/each}
 	</div>
 </div>

@@ -1,39 +1,70 @@
 <script>
-	import { PlaySongFromList } from "../js/logic.js";
+	import { PlaySongFromList, getYouTubeTitle } from "../js/logic.js";
+	import { CurrentSong } from "../js/data.svelte.js";
 
 	let props = $props();
+	let title = $state({ val: "" });
+
+	// Function to fetch title and update state
+	async function GetTitle(id) {
+		title.val = await getYouTubeTitle(id);
+	}
+
+	GetTitle(props.id);
 </script>
 
-<div id="root">
-	<div id="info">
-		<img src="https://img.youtube.com/vi/{props.id}/maxresdefault.jpg" id="img" alt="Music Logo" />
-		<h1 id="name">{props.name}</h1>
+{#if CurrentSong.id == props.id}
+	<div id="root" class="current">
+		<div id="info">
+			<img
+				src={`https://img.youtube.com/vi/${props.id}/maxresdefault.jpg`}
+				id="img"
+				alt="Music Logo"
+			/>
+			<h1 id="name">
+				{title.val.length > 0 ? title.val : "Loading..."}
+			</h1>
+		</div>
 	</div>
-	<div>
-		<button
-			onclick={() => {
-				PlaySongFromList(props.id, props.name, props.image);
-			}}
-			aria-label="play song"
-			id="play"
-			><svg
-				xmlns="http://www.w3.org/2000/svg"
-				height="30px"
-				viewBox="0 -960 960 960"
-				width="30px"
-				fill="#e3e3e3"
-				><path
-					d="M320-203v-560l440 280-440 280Zm60-280Zm0 171 269-171-269-171v342Z"
-				/></svg
-			></button
-		>
-	</div>
-</div>
+{:else}
+	<div id="root" class="Notcurrent">
+		<div id="info">
+			<img
+				src={`https://img.youtube.com/vi/${props.id}/maxresdefault.jpg`}
+				id="img"
+				alt="Music Logo"
+			/>
+			<h1 id="name">
+				{title.val.length > 0 ? title.val : "Loading..."}
+			</h1>
+		</div>
+		<div>
+			<button
+				onclick={() => {
+					PlaySongFromList(props.id);
+				}}
+				aria-label="play song"
+				id="play"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					height="30px"
+					viewBox="0 -960 960 960"
+					width="30px"
+					fill="#e3e3e3"
+				>
+					<path
+						d="M320-203v-560l440 280-440 280Zm60-280Zm0 171 269-171-269-171v342Z"
+					/>
+				</svg>
+			</button>
+		</div>
+	</div>{/if}
 
 <style>
 	#root {
 		border: 2px solid #2e2e2e;
-		background-color: #131313;
+
 		color: #d8d8d8;
 		padding: 5px;
 		border-radius: 5px;
@@ -41,6 +72,13 @@
 
 		display: flex;
 		justify-content: space-between;
+	}
+
+	.Notcurrent {
+		background-color: #131313;
+	}
+	.current {
+		background-color: #122125;
 	}
 
 	#info {
