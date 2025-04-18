@@ -1,11 +1,19 @@
 <script>
-	import List from "./list/list.svelte";
-	import Player from "./player/Player.svelte";
+	import Router from "svelte-spa-router";
+
+	import Home from "./pages/home/home.svelte";
+	import setings from "./pages/setings/setings.svelte";
+	let routes = {
+		"/": Home,
+		"/setings": setings
+	};
+
+	import Nav from "./nav.svelte";
 </script>
 
 <div id="root">
-	<h1>The Hackers Music</h1>
-	<div id="music"><Player /><List /></div>
+	<Nav />
+	<Router {routes} />
 </div>
 
 <style>
@@ -13,29 +21,11 @@
 		background-color: black;
 		color: white;
 	}
-	h1 {
-		text-align: center;
-		color: white;
-		margin: 0;
-		padding-top: 10px;
-	}
 
 	#root {
+		margin: 0;
 		height: 100%;
-		align-items: center;
-		justify-content: center;
-
 		display: flex;
 		flex-direction: column;
-		margin: 0;
-	}
-
-	#music {
-		flex: 1;
-		width: 100%;
-		gap: 10px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 	}
 </style>
