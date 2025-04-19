@@ -2,7 +2,7 @@
 	<div>
 		<a href="#/">
 			<img
-				src="https://placehold.co/300x48"
+				src="https://hc-cdn.hel1.your-objectstorage.com/s/v3/3af3c81b1b897a2ab613589e7de1f4e97c51835e_group_2__1_.svg"
 				alt="logo"
 				id="logo"
 			/>
@@ -38,7 +38,7 @@
 	}
 
 	#logo {
-		width: 300px;
+		height: 50px;
 		margin: 10px;
 	}
 
