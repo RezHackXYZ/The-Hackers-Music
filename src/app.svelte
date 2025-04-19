@@ -3,14 +3,18 @@
 
 	import Home from "./pages/home/home.svelte";
 	import setings from "./pages/setings/setings.svelte";
+	import Matrix from "./matrix.svelte";
 	let routes = {
 		"/": Home,
-		"/setings": setings
+		"/setings": setings,
 	};
 
 	import Nav from "./nav.svelte";
 </script>
 
+<div id="matrix">
+	<Matrix />
+</div>
 <div id="root">
 	<Nav />
 	<Router {routes} />
@@ -20,6 +24,7 @@
 	:root {
 		background-color: black;
 		color: white;
+		font-family: "Space Grotesk", sans-serif;
 	}
 
 	#root {
@@ -28,4 +33,13 @@
 		display: flex;
 		flex-direction: column;
 	}
+
+	#matrix {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+	}	
 </style>

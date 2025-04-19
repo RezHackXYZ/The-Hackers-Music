@@ -1,11 +1,14 @@
 import { CurrentSong } from "./data.svelte.js";
-let data = JSON.parse(localStorage.getItem("songs"));
+import DefaultSong from "./data.json";
+export let DefaultSongs = DefaultSong;
+let data = localStorage.getItem("songs") ? JSON.parse(localStorage.getItem("songs")) : DefaultSongs;
 export let songs = data;
 
 let player;
 
 export async function getYouTubeTitle(id) {
-	try {
+	return "abc";
+	/*try {
 		const url = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`;
 		const response = await fetch(url);
 		if (!response.ok) throw new Error("Invalid video or unavailable");
@@ -14,7 +17,7 @@ export async function getYouTubeTitle(id) {
 	} catch (error) {
 		console.error("Error fetching title:", error);
 		return null;
-	}
+	}*/
 }
 
 let i = 0;
@@ -22,11 +25,11 @@ let i = 0;
 
 function NextSong() {
 	for (i = 0; i < songs.length; i++) {
-		if (songs[i] == CurrentSong.id) {
+		if (songs[i].id == CurrentSong.id) {
 			if (i == songs.length - 1) {
-				PlaySongFromList(songs[0]);
+				PlaySongFromList(songs[0].id,songs[0].name);
 			} else {
-				PlaySongFromList(songs[i + 1]);
+				PlaySongFromList(songs[i + 1].id,songs[i+1].name) ;
 			}
 			break;
 		}
@@ -63,11 +66,12 @@ window.onYouTubeIframeAPIReady = () => {
 	});
 };
 
-export function PlaySongFromList(id) {
+export function PlaySongFromList(id,name) {
 	CurrentSong.id = id;
-	getYouTubeTitle(id).then((title) => {
+	CurrentSong.name = name;
+	/*getYouTubeTitle(id).then((title) => {
 		CurrentSong.name = title;
-	});
+	});*/
 	CurrentSong.Playing = true;
 	playsong(id);
 }

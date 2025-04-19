@@ -33,7 +33,8 @@
 		justify-content: space-between;
 		margin: 10px;
 		border-radius: 10px;
-        background-color: #161616;
+		backdrop-filter: blur(10px);
+		border: 2px solid white;
 	}
 
 	#logo {

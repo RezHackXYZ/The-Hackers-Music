@@ -6,13 +6,12 @@
 <div id="root"><Player /><List /></div>
 
 <style>
-
 	#root {
 		height: 100%;
+		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap:5px;
-		display: flex;
-		margin: 0;
+		overflow: hidden;
+		gap: 5px;
 	}
 </style>

@@ -8,7 +8,11 @@
 <div id="root">
 	{#if CurrentSong.id != "na"}
 		<div id="holder">
-			<img src="https://img.youtube.com/vi/{CurrentSong.id}/maxresdefault.jpg" alt="music cover" id="img" />
+			<img
+				src="https://img.youtube.com/vi/{CurrentSong.id}/maxresdefault.jpg"
+				alt="music cover"
+				id="img"
+			/>
 			<h1 id="nameofsong">{CurrentSong.name}</h1>
 		</div>
 		<div id="controlls">
@@ -56,6 +60,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		backdrop-filter: blur(10px);
 	}
 
 	#holder {

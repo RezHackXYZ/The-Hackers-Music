@@ -1,11 +1,13 @@
 <script>
+	import { DefaultSongs } from "../home/js/logic.js";
+
 	let songs = "";
 
-	songs = localStorage.getItem("songs") || "";
+	songs = localStorage.getItem("songs") || JSON.stringify(DefaultSongs);
 </script>
 
 <div id="root">
-	<div>
+	<div id="stuff">
 		<h1>Add your youtube vid ids for the songs here!</h1>
 		<p>
 			We use YouTube to play the songs and retrieve the image from the
@@ -30,6 +32,13 @@
 		display: grid;
 		place-items: center;
 		height: 100%;
+	}
+
+	#stuff {
+		padding: 20px;
+		backdrop-filter: blur(10px);
+		border-radius: 20px;
+		border: 2px solid white;
 	}
 
 	h1 {

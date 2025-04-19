@@ -22,7 +22,11 @@
 				alt="Music Logo"
 			/>
 			<h1 id="name">
+				<!--
 				{title.val.length > 0 ? title.val : "Loading..."}
+				-->
+
+				{props.name}
 			</h1>
 		</div>
 	</div>
@@ -35,13 +39,17 @@
 				alt="Music Logo"
 			/>
 			<h1 id="name">
+				<!--
 				{title.val.length > 0 ? title.val : "Loading..."}
+				-->
+
+				{props.name}
 			</h1>
 		</div>
 		<div>
 			<button
 				onclick={() => {
-					PlaySongFromList(props.id);
+					PlaySongFromList(props.id, props.name);
 				}}
 				aria-label="play song"
 				id="play"
@@ -63,7 +71,6 @@
 
 <style>
 	#root {
-		border: 2px solid #2e2e2e;
 
 		color: #d8d8d8;
 		padding: 5px;
@@ -75,10 +82,10 @@
 	}
 
 	.Notcurrent {
-		background-color: #131313;
+		border: 2px solid #2e2e2e;
 	}
 	.current {
-		background-color: #122125;
+		border: 2px solid #07c400;
 	}
 
 	#info {
