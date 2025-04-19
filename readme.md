@@ -71,3 +71,7 @@ This project is available under a custom open-source license:
 Fork it and send a pull request!
 
 All contributions are welcome — whether you're fixing a color for consistency or adding a feature that totally changes the app!
+
+
+<hr>
+<p>P.S. alt+f4 to summon the matrix 👾</p>

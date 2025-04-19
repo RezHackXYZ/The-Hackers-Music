@@ -4,9 +4,11 @@
 	import Home from "./pages/home/home.svelte";
 	import setings from "./pages/setings/setings.svelte";
 	import Matrix from "./matrix.svelte";
+	import About from "./pages/about/about.svelte";
 	let routes = {
 		"/": Home,
 		"/setings": setings,
+		"/about": About,
 	};
 
 	import Nav from "./nav.svelte";
@@ -41,5 +43,5 @@
 		width: 100%;
 		height: 100%;
 		z-index: -1;
-	}	
+	}
 </style>
