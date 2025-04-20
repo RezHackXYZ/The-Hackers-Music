@@ -15,7 +15,7 @@
 </script>
 
 <div id="matrix">
-	<Matrix />
+	<!--<Matrix />-->
 </div>
 <div id="root">
 	<Nav />

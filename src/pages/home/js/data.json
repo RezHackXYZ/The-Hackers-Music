@@ -1,51 +1,59 @@
 [
 	{
-		"name": "Next",
-		"id": "-GUcNi1Jmhw"
+		"Name": "Phonk",
+		"songs": [
+			{
+				"name": "Next",
+				"id": "-GUcNi1Jmhw"
+			},
+			{
+				"name": "Funk Do Bounce",
+				"id": "A-21OwpaPig"
+			},
+			{
+				"name": "Void",
+				"id": "O2adzodhOE4"
+			},
+			{
+				"name": "Funk De Beleza",
+				"id": "XXIT9Va1A9s"
+			},
+			{
+				"name": "Passo Bem Solto",
+				"id": "A3xxG5zHuCA"
+			},
+			{
+				"name": "Slay",
+				"id": "Z0xdFqD3EUQ"
+			},
+			{
+				"name": "Nunca Muda",
+				"id": "jJu1bmjctUM"
+			},
+			{
+				"name": "Automotiv Mangos",
+				"id": "r_-MLoiVc6E"
+			},
+			{
+				"name": "Bad Parenting",
+				"id": "etSsiGyLSmw"
+			},
+			{
+				"name": "Whine In Brazil",
+				"id": "aDl44-M6M0E"
+			},
+			{
+				"name": "Aura",
+				"id": "u9QQmrfsgpg"
+			},
+			{
+				"name": "Masha",
+				"id": "vkBDkItNWVI"
+			}
+		]
 	},
-
 	{
-		"name": "Funk Do Bounce",
-		"id": "A-21OwpaPig"
-	},
-	{
-		"name": "Void",
-		"id": "O2adzodhOE4"
-	},
-	{
-		"name": "Funk De Beleza",
-		"id": "XXIT9Va1A9s"
-	},
-	{
-		"name": "Passo Bem Solto",
-		"id": "A3xxG5zHuCA"
-	},
-	{
-		"name": "Slay",
-		"id": "Z0xdFqD3EUQ"
-	},
-	{
-		"name": "Nunca Muda",
-		"id": "jJu1bmjctUM"
-	},
-	{
-		"name": "Automotiv Mangos",
-		"id": "r_-MLoiVc6E"
-	},
-	{
-		"name": "Bad Parenting",
-		"id": "etSsiGyLSmw"
-	},
-	{
-		"name": "Whine In Brazil",
-		"id": "aDl44-M6M0E"
-	},
-	{
-		"name": "Aura",
-		"id": "u9QQmrfsgpg"
-	},
-	{
-		"name": "Masha",
-		"id": "vkBDkItNWVI"
+		"Name": "Chill",
+		"songs": []
 	}
 ]

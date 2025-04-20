@@ -1,7 +1,9 @@
 import { CurrentSong } from "./data.svelte.js";
 import DefaultSong from "./data.json";
 export let DefaultSongs = DefaultSong;
-let data = localStorage.getItem("songs") ? JSON.parse(localStorage.getItem("songs")) : DefaultSongs;
+let data = localStorage.getItem("songs")
+	? JSON.parse(localStorage.getItem("songs"))
+	: DefaultSongs;
 export let songs = data;
 
 let player;
@@ -22,14 +24,13 @@ export async function getYouTubeTitle(id) {
 
 let i = 0;
 
-
 function NextSong() {
 	for (i = 0; i < songs.length; i++) {
-		if (songs[i].id == CurrentSong.id) {
+		if (songs[CurrentSong.PlaylistNo].songs[i].id == CurrentSong.id) {
 			if (i == songs.length - 1) {
-				PlaySongFromList(songs[0].id,songs[0].name);
+				PlaySongFromList(songs[CurrentSong.PlaylistNo].songs[0].id, songs[CurrentSong.PlaylistNo].songs[0].name);
 			} else {
-				PlaySongFromList(songs[i + 1].id,songs[i+1].name) ;
+				PlaySongFromList(songs[CurrentSong.PlaylistNo].songs[i+1].id, songs[CurrentSong.PlaylistNo].songs[i+1].name);
 			}
 			break;
 		}
@@ -66,7 +67,7 @@ window.onYouTubeIframeAPIReady = () => {
 	});
 };
 
-export function PlaySongFromList(id,name) {
+export function PlaySongFromList(id, name) {
 	CurrentSong.id = id;
 	CurrentSong.name = name;
 	/*getYouTubeTitle(id).then((title) => {
@@ -90,5 +91,18 @@ export function PauseOrPlay() {
 	} else {
 		player.playVideo();
 		CurrentSong.Playing = true;
+	}
+}
+
+export function ChangePlaylist(playlist) {
+	for (i = 0; i < songs.length; i++) {
+		if (songs[i].Name == playlist) {
+			CurrentSong.playlistName = songs[i].Name;
+			CurrentSong.PlaylistNo = i;
+			player.pauseVideo();
+			CurrentSong.Playing = true;
+			CurrentSong.id = "na";
+			break;
+		}
 	}
 }
