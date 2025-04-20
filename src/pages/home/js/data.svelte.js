@@ -1,7 +1,8 @@
 export let CurrentSong = $state({
 	id: "na",
 	name: "",
-	playlistName: "Phonk",
+	playlistName:"" ,
 	PlaylistNo: 0,
 	Playing: true,
 });
+

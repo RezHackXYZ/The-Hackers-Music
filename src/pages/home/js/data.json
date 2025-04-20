@@ -31,7 +31,7 @@
 				"id": "jJu1bmjctUM"
 			},
 			{
-				"name": "Automotiv Mangos",
+				"name": "Automotivo Mangos",
 				"id": "r_-MLoiVc6E"
 			},
 			{
@@ -54,6 +54,15 @@
 	},
 	{
 		"Name": "Chill",
-		"songs": []
+		"songs": [
+			{
+				"name": "Aura",
+				"id": "u9QQmrfsgpg"
+			},
+			{
+				"name": "Masha",
+				"id": "vkBDkItNWVI"
+			}
+		]
 	}
 ]

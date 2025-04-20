@@ -104,6 +104,7 @@
 		margin: 0;
 		align-self: center;
 		margin-left: 10px;
+		font-size: 25px;
 	}
 
 	#play {

@@ -43,7 +43,6 @@
 		width: 25%;
 		border-radius: 20px;
 		backdrop-filter: blur(10px);
-
 		overflow-y: auto;
 	}
 

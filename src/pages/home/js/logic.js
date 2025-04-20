@@ -5,6 +5,7 @@ let data = localStorage.getItem("songs")
 	? JSON.parse(localStorage.getItem("songs"))
 	: DefaultSongs;
 export let songs = data;
+CurrentSong.playlistName = songs[0].Name;
 
 let player;
 
