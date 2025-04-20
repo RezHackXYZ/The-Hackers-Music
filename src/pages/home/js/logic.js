@@ -25,7 +25,7 @@ export async function getYouTubeTitle(id) {
 let i = 0;
 
 function NextSong() {
-	for (i = 0; i < songs.length; i++) {
+	for (i = 0; i < songs[CurrentSong.PlaylistNo].songs.length; i++) {
 		if (songs[CurrentSong.PlaylistNo].songs[i].id == CurrentSong.id) {
 			if (i == songs[CurrentSong.PlaylistNo].songs.length - 1) {
 				PlaySongFromList(
@@ -62,7 +62,6 @@ window.onYouTubeIframeAPIReady = () => {
 		playerVars: {
 			autoplay: 0,
 			controls: 0,
-			mute: 0, // Needed for autoplay to work on most browsers
 		},
 		events: {
 			onReady: (event) => {
