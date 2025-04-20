@@ -27,10 +27,16 @@ let i = 0;
 function NextSong() {
 	for (i = 0; i < songs.length; i++) {
 		if (songs[CurrentSong.PlaylistNo].songs[i].id == CurrentSong.id) {
-			if (i == songs.length - 1) {
-				PlaySongFromList(songs[CurrentSong.PlaylistNo].songs[0].id, songs[CurrentSong.PlaylistNo].songs[0].name);
+			if (i == songs[CurrentSong.PlaylistNo].songs.length - 1) {
+				PlaySongFromList(
+					songs[CurrentSong.PlaylistNo].songs[0].id,
+					songs[CurrentSong.PlaylistNo].songs[0].name
+				);
 			} else {
-				PlaySongFromList(songs[CurrentSong.PlaylistNo].songs[i+1].id, songs[CurrentSong.PlaylistNo].songs[i+1].name);
+				PlaySongFromList(
+					songs[CurrentSong.PlaylistNo].songs[i + 1].id,
+					songs[CurrentSong.PlaylistNo].songs[i + 1].name
+				);
 			}
 			break;
 		}
