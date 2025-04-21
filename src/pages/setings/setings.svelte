@@ -7,6 +7,7 @@
 	let EditType = $state({ value: "na" });
 
 	import EditPlaylist from "./editPopups/EditPlaylist.svelte";
+	import NewSong from "./editPopups/NewSong.svelte";
 
 	function EditPlaylistButton() {
 		document.getElementById("EditPopupDiv").style.display = "grid";
@@ -26,6 +27,26 @@
 			localStorage.setItem("songs", JSON.stringify(songs.value));
 			CurrentPlaylistNo.value = 0;
 			currentPlaylistEditing.value = songs.value[0].Name;
+		}
+	}
+
+	function newSongButton() {
+		document.getElementById("EditPopupDiv").style.display = "grid";
+		EditType.value = "NewSong";
+	}
+
+	export function DoneNewSong(name, id) {
+		document.getElementById("EditPopupDiv").style.display = "none";
+		EditType.value = "na";
+		if (id != "na") {
+			songs.value[CurrentPlaylistNo.value].songs.push(
+				{
+					"name": name,
+					"id": id,
+				}
+				
+			);
+			localStorage.setItem("songs", JSON.stringify(songs.value));
 		}
 	}
 </script>
@@ -106,7 +127,12 @@
 								/></svg
 							></button
 						>
-					{/each} <button>+</button>
+					{/each}
+					<button
+						onclick={() => {
+							newSongButton();
+						}}>+</button
+					>
 				</div>
 			</div>
 		</div>
@@ -116,8 +142,10 @@
 <div class="EditPopupDiv" id="EditPopupDiv">
 	{#if EditType.value == "Playlist"}
 		<EditPlaylist />
+	{:else if EditType.value == "NewSong"}
+		<NewSong />
 	{:else if EditType.value == "na"}
-	<p>Nothing to edit</p>
+		<p>Nothing to edit</p>
 	{:else}
 		<p>Nothing to edit</p>
 	{/if}
