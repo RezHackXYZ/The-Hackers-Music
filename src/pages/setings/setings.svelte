@@ -1,34 +1,21 @@
 <script module>
 	import { DefaultSongs } from "../home/js/logic.js";
-
-	import EditPopup from "./editPopup.svelte";
-
+	import Playlist from "../home/list/playlist.svelte";
 	let songs = JSON.parse(localStorage.getItem("songs")) || DefaultSongs;
+	let currentPlaylistEditing = $state({ value: songs[0].Name });
+	let CurrentPlaylistNo = $state({ value: 0 });
+	let EditType = $state({ value: "" });
 
-	let currentPlaylistEditing =  $state({value: songs[0].Name});
-	let CurrentPlaylistNo = $state({value: 0});
+	import EditPlaylist from "./editPopups/EditPlaylist.svelte";
 
-	let typeofEdit = "playlist";
-	let value = 0;
-
-	function EditProses(type) {
-		if (type == "playlist") {
-			typeofEdit = "playlist";
-			value = CurrentPlaylistNo.value;
-			document.getElementById("EditPopupDiv").style.display = "grid";
-		}
+	function EditPlaylistButton() {
+		document.getElementById("EditPopupDiv").style.display = "grid";
+		EditType.value = "Playlist";
 	}
 
-	export function EditDone(changetype, changetoo, whatchange) {
+	function DonePlaylistRename() {
 		document.getElementById("EditPopupDiv").style.display = "none";
-		if (changetype == "na") {
-			return;
-		} else if (changetype == "playlistRename") {
-			songs[changetoo].Name = whatchange;
-			currentPlaylistEditing.value = whatchange;
-			localStorage.setItem("songs", JSON.stringify(songs));
-			window.location.reload();
-		}
+		EditType.value = "";
 	}
 </script>
 
@@ -71,7 +58,7 @@
 					<h3>
 						Songs In Playlist "<button
 							onclick={() => {
-								EditProses("playlist");
+								EditPlaylistButton();
 							}}
 							class="currentPlaylist"
 						>
@@ -115,8 +102,10 @@
 	</div>
 </div>
 
-<div id="EditPopupDiv">
-	<EditPopup type={typeofEdit} {value} />
+<div class="EditPopupDiv" id="EditPopupDiv">
+	{#if EditType.value == "Playlist"}
+		<EditPlaylist />
+	{/if}
 </div>
 
 <style>
@@ -193,7 +182,7 @@
 		color: #5e5e5e;
 	}
 
-	#EditPopupDiv {
+	.EditPopupDiv {
 		background-color: #000000ad;
 		height: 100%;
 		width: 100%;

@@ -1,36 +1,12 @@
-<script>
-	let props = $props();
-
-	import { EditDone } from "./setings.svelte";
-	import { DefaultSongs } from "../home/js/logic.js";
-	let songs = localStorage.getItem("songs") || DefaultSongs;
-</script>
-
 <div id="root">
 	<h1>Rename Playlist?</h1>
 
-	<p>From: {songs[props.value].Name}</p>
+	<p>From:</p>
 	<p>
-		To: <input
-			type="text"
-			autofocus
-			id="name"
-			placeholder="Enter New Name"
-		/>
+		To: <input type="text" id="name" placeholder="Enter New Name" />
 	</p>
 
-	<button id="doit" 
-		onclick={
-			() => {
-				let newName = document.getElementById("name").value;
-				if (newName == "") {
-					alert("Please enter a name");
-					return;
-				}
-				EditDone("playlistRename", props.value, newName);
-			}
-		}
-	>Rename It!</button>
+	<button id="doit">Rename It!</button>
 
 	<hr />
 
@@ -42,11 +18,7 @@
 	<br />
 	<button id="Cancle">Delete Playlist</button>
 	<hr />
-	<button
-		onclick={() => {
-			EditDone("na");
-		}}>Cancle any changes</button
-	>
+	<button>Cancle any changes</button>
 </div>
 
 <style>
