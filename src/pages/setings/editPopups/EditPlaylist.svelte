@@ -1,24 +1,59 @@
+<script>
+	import {
+		DonePlaylistEdit,
+		currentPlaylistEditing,
+	} from "../setings.svelte";
+
+	let NewName = "";
+
+	let box2 = false;
+	let box1 = false;
+</script>
+
 <div id="root">
 	<h1>Rename Playlist?</h1>
 
-	<p>From:</p>
+	<p>From: {currentPlaylistEditing.value}</p>
 	<p>
-		To: <input type="text" id="name" placeholder="Enter New Name" />
+		To: <input
+			type="text"
+			bind:value={NewName}
+			id="name"
+			placeholder="Enter New Name"
+		/>
 	</p>
 
-	<button id="doit">Rename It!</button>
+	<button
+		id="doit"
+		onclick={() => {
+			DonePlaylistEdit("rename", NewName);
+		}}>Rename It!</button
+	>
 
 	<hr />
 
 	<h1>Delete Playlist?</h1>
-	<input type="checkbox" id="delete" />
+	<input type="checkbox" id="delete" bind:checked={box1} />
 	<label for="delete">Im Sure</label>
-	<input type="checkbox" id="delete2" />
+	<input type="checkbox" id="delete2" bind:checked={box2} />
 	<label for="delete2">Im Double Sure</label>
 	<br />
-	<button id="Cancle">Delete Playlist</button>
+	<button
+		id="Cancle"
+		onclick={() => {
+			if (!box1){
+				alert("Be sure first!")
+			} else if (!box2){
+				alert("Be double sure!")
+			} else {
+				DonePlaylistEdit("delete", "");
+			}
+		}}>Delete Playlist</button
+	>
 	<hr />
-	<button>Cancle any changes</button>
+	<button onclick={() => {
+		DonePlaylistEdit("na", "");
+	}}>Cancle any changes</button>
 </div>
 
 <style>

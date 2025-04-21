@@ -1,10 +1,10 @@
 <script module>
 	import { DefaultSongs } from "../home/js/logic.js";
-	import Playlist from "../home/list/playlist.svelte";
-	let songs = JSON.parse(localStorage.getItem("songs")) || DefaultSongs;
-	let currentPlaylistEditing = $state({ value: songs[0].Name });
+	let Firstsongs = JSON.parse(localStorage.getItem("songs")) || DefaultSongs;
+	let songs = $state({ value: Firstsongs });
+	export let currentPlaylistEditing = $state({ value: songs.value[0].Name });
 	let CurrentPlaylistNo = $state({ value: 0 });
-	let EditType = $state({ value: "" });
+	let EditType = $state({ value: "na" });
 
 	import EditPlaylist from "./editPopups/EditPlaylist.svelte";
 
@@ -13,9 +13,20 @@
 		EditType.value = "Playlist";
 	}
 
-	function DonePlaylistRename() {
+	export function DonePlaylistEdit(type, change) {
 		document.getElementById("EditPopupDiv").style.display = "none";
-		EditType.value = "";
+		EditType.value = "na";
+
+		if (type == "rename") {
+			currentPlaylistEditing.value = change;
+			songs.value[CurrentPlaylistNo.value].Name = change;
+			localStorage.setItem("songs", JSON.stringify(songs.value));
+		} else if (type == "delete") {
+			songs.value.splice(CurrentPlaylistNo.value, 1);
+			localStorage.setItem("songs", JSON.stringify(songs.value));
+			CurrentPlaylistNo.value = 0;
+			currentPlaylistEditing.value = songs.value[0].Name;
+		}
 	}
 </script>
 
@@ -31,7 +42,7 @@
 			<div id="editstuff">
 				<div id="playlists">
 					<h3>PLAYLISTS</h3>
-					{#each songs as song, index}
+					{#each songs.value as song, index}
 						<button
 							onclick={() => {
 								currentPlaylistEditing.value = song.Name;
@@ -75,7 +86,7 @@
 							></button
 						>"
 					</h3>
-					{#each songs[CurrentPlaylistNo.value].songs as song}
+					{#each songs.value[CurrentPlaylistNo.value].songs as song}
 						<button
 							><img
 								src="https://img.youtube.com/vi/{song.id}/maxresdefault.jpg"
@@ -105,6 +116,10 @@
 <div class="EditPopupDiv" id="EditPopupDiv">
 	{#if EditType.value == "Playlist"}
 		<EditPlaylist />
+	{:else if EditType.value == "na"}
+	<p>Nothing to edit</p>
+	{:else}
+		<p>Nothing to edit</p>
 	{/if}
 </div>
 
