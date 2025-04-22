@@ -1,43 +1,32 @@
 <script>
-	import { DoneNewSong, currentPlaylistEditing } from "../setings.svelte";
+	import { DoneNewPlaylist } from "../setings.svelte";
 
 	let Name = "";
-	let id = "";
 </script>
 
 <div id="root">
-	<h1>New SONG!!!</h1>
-
-	<p>In Playlist: {currentPlaylistEditing.value}</p>
+	<h1>New Playlist!!!</h1>
 	<p>
-		Name Of the song: <input
+		Name Of new playlist!: <input
 			type="text"
 			bind:value={Name}
 			id="name"
-			placeholder="Enter the name"
-		/>
-	</p>
-	<p>
-		Id for the song: <input
-			type="text"
-			bind:value={id}
-			id="name"
-			placeholder="Enter The id"
+			placeholder="Enter the name of the playlist!"
 		/>
 	</p>
 
 	<button
 		id="doit"
 		onclick={() => {
-			DoneNewSong(Name, id);
+			DoneNewPlaylist(Name);
 		}}>Add It!</button
 	>
 
 	<hr />
 	<button
 		onclick={() => {
-			DoneNewSong("", "na");
-		}}>😔 No new song? 😔</button
+			DoneNewPlaylist("");
+		}}>😔 No new playlist? 😔</button
 	>
 </div>
 

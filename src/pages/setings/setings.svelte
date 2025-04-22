@@ -8,6 +8,7 @@
 
 	import EditPlaylist from "./editPopups/EditPlaylist.svelte";
 	import NewSong from "./editPopups/NewSong.svelte";
+	import NewPlaylist from "./editPopups/NewPlaylist.svelte";
 
 	function EditPlaylistButton() {
 		document.getElementById("EditPopupDiv").style.display = "grid";
@@ -39,15 +40,30 @@
 		document.getElementById("EditPopupDiv").style.display = "none";
 		EditType.value = "na";
 		if (id != "na") {
-			songs.value[CurrentPlaylistNo.value].songs.push(
-				{
-					"name": name,
-					"id": id,
-				}
-				
-			);
+			songs.value[CurrentPlaylistNo.value].songs.push({
+				name: name,
+				id: id,
+			});
 			localStorage.setItem("songs", JSON.stringify(songs.value));
 		}
+	}
+
+	function newPlaylistButton() {
+		document.getElementById("EditPopupDiv").style.display = "grid";
+		EditType.value = "NewPlaylist";
+	}
+
+	export function DoneNewPlaylist(name) {
+		document.getElementById("EditPopupDiv").style.display = "none";
+		EditType.value = "na";
+		if (name != "") {
+			songs.value.push({
+				Name: name,
+				songs: [],
+			});
+			localStorage.setItem("songs", JSON.stringify(songs.value));
+		}
+		window.location.reload();
 	}
 </script>
 
@@ -83,7 +99,11 @@
 							></button
 						>
 					{/each}
-					<button>+</button>
+					<button
+						onclick={() => {
+							newPlaylistButton();
+						}}>+</button
+					>
 				</div>
 				<hr />
 				<div id="songs">
@@ -144,6 +164,8 @@
 		<EditPlaylist />
 	{:else if EditType.value == "NewSong"}
 		<NewSong />
+	{:else if EditType.value == "NewPlaylist"}
+		<NewPlaylist />
 	{:else if EditType.value == "na"}
 		<p>Nothing to edit</p>
 	{:else}
