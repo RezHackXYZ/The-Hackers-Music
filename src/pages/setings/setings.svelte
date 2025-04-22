@@ -1,5 +1,5 @@
 <script module>
-	import { DefaultSongs } from "../home/js/logic.js";
+	import { DefaultSongs } from "../app/js/logic.js";
 	let Firstsongs = JSON.parse(localStorage.getItem("songs")) || DefaultSongs;
 	export let songs = $state({ value: Firstsongs });
 	export let currentPlaylistEditing = $state({ value: songs.value[0].Name });

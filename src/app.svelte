@@ -1,21 +1,21 @@
 <script>
 	import Router from "svelte-spa-router";
 
-	import Home from "./pages/home/home.svelte";
+	import Home from "./pages/app/home.svelte";
 	import setings from "./pages/setings/setings.svelte";
 	import Matrix from "./matrix.svelte";
-	import About from "./pages/about/about.svelte";
+	import About from "./pages/home/home.svelte";
 	let routes = {
-		"/": Home,
+		"/app": Home,
 		"/setings": setings,
-		"/about": About,
+		"/": About,
 	};
 
 	import Nav from "./nav.svelte";
 </script>
 
 <div id="matrix">
-	<!--<Matrix />-->
+	<Matrix />
 </div>
 <div id="root">
 	<Nav />
