@@ -1,14 +1,16 @@
 <script module>
 	import { DefaultSongs } from "../home/js/logic.js";
 	let Firstsongs = JSON.parse(localStorage.getItem("songs")) || DefaultSongs;
-	let songs = $state({ value: Firstsongs });
+	export let songs = $state({ value: Firstsongs });
 	export let currentPlaylistEditing = $state({ value: songs.value[0].Name });
-	let CurrentPlaylistNo = $state({ value: 0 });
+	export let CurrentPlaylistNo = $state({ value: 0 });
 	let EditType = $state({ value: "na" });
+	export let SecectedSongForEdit = $state({ value: 0 });
 
 	import EditPlaylist from "./editPopups/EditPlaylist.svelte";
 	import NewSong from "./editPopups/NewSong.svelte";
 	import NewPlaylist from "./editPopups/NewPlaylist.svelte";
+	import EditSong from "./editPopups/EditSong.svelte";
 
 	function EditPlaylistButton() {
 		document.getElementById("EditPopupDiv").style.display = "grid";
@@ -64,6 +66,35 @@
 			localStorage.setItem("songs", JSON.stringify(songs.value));
 		}
 		window.location.reload();
+	}
+
+	function EditSongButton(i) {
+		document.getElementById("EditPopupDiv").style.display = "grid";
+		EditType.value = "EditSong";
+		SecectedSongForEdit.value = i;
+	}
+
+	export function DoneSongEdit(type, change) {
+		document.getElementById("EditPopupDiv").style.display = "none";
+		EditType.value = "na";
+
+		if (type == "edit") {
+			songs.value[CurrentPlaylistNo.value].songs[
+				SecectedSongForEdit.value
+			].name = change.name;
+			songs.value[CurrentPlaylistNo.value].songs[
+				SecectedSongForEdit.value
+			].id = change.id;
+			localStorage.setItem("songs", JSON.stringify(songs.value));
+			window.location.reload();
+		} else if (type == "delete") {
+			songs.value[CurrentPlaylistNo.value].songs.splice(
+				SecectedSongForEdit.value,
+				1
+			);
+			localStorage.setItem("songs", JSON.stringify(songs.value));
+			window.location.reload();
+		}
 	}
 </script>
 
@@ -127,8 +158,11 @@
 							></button
 						>"
 					</h3>
-					{#each songs.value[CurrentPlaylistNo.value].songs as song}
+					{#each songs.value[CurrentPlaylistNo.value].songs as song, i}
 						<button
+							onclick={() => {
+								EditSongButton(i);
+							}}
 							><img
 								src="https://img.youtube.com/vi/{song.id}/maxresdefault.jpg"
 								alt="music cover"
@@ -168,6 +202,8 @@
 		<NewPlaylist />
 	{:else if EditType.value == "na"}
 		<p>Nothing to edit</p>
+	{:else if EditType.value == "EditSong"}
+		<EditSong />
 	{:else}
 		<p>Nothing to edit</p>
 	{/if}
