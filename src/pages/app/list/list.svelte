@@ -41,6 +41,7 @@
 		height: 80%;
 		border: 10px solid rgb(46, 46, 46);
 		width: 25%;
+		min-width: 300px;
 		border-radius: 20px;
 		backdrop-filter: blur(10px);
 		overflow-y: auto;
@@ -72,5 +73,11 @@
 	/* Handle on hover */
 	::-webkit-scrollbar-thumb:hover {
 		background: #264129;
+	}
+
+	@media only screen and (max-width: 800px) {
+		#root {
+			width: 90%;
+		}
 	}
 </style>

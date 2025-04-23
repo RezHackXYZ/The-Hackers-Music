@@ -55,6 +55,7 @@
 		height: 80%;
 		border: 10px solid rgb(46, 46, 46);
 		width: 50%;
+		min-width: 400px;
 		border-radius: 20px;
 		display: flex;
 		flex-direction: column;
@@ -72,12 +73,13 @@
 	}
 
 	#img {
-		height: 400px;
-		width: 380px;
 		border-radius: 5px;
 		border: 10px solid #292929;
 		object-fit: cover;
 		object-position: center;
+		width: 500px;
+		max-width: 70%;
+		aspect-ratio: 1/1;
 	}
 
 	#nameofsong {
@@ -85,6 +87,7 @@
 		background-color: #131313a1;
 		border: 5px solid #292929f8;
 		width: 600px;
+		max-width: 80%;
 		border-radius: 20px;
 		padding: 10px;
 		text-align: center;
@@ -94,6 +97,7 @@
 	#controlls {
 		background-color: #292929;
 		width: 600px;
+		max-width: 80%;
 		border-radius: 20px;
 		padding: 10px;
 		text-align: center;
@@ -112,5 +116,13 @@
 
 	#play:hover {
 		transform: scale(1.1);
+	}
+
+	@media only screen and (max-width: 800px) {
+		#root {
+			width: 90%;
+			min-width: 1px;
+			height: 60%;
+		}
 	}
 </style>

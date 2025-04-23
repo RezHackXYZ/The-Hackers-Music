@@ -241,6 +241,7 @@
 	#playlists {
 		display: flex;
 		flex-direction: column;
+		width: 90px;
 	}
 
 	#songs {

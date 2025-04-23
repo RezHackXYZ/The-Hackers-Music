@@ -29,6 +29,10 @@
 		font-family: "Space Grotesk", sans-serif;
 	}
 
+	* {
+		font-family: "Space Grotesk", sans-serif;
+	}
+
 	#root {
 		margin: 0;
 		height: 100%;

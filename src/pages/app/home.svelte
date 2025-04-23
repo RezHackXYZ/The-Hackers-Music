@@ -3,7 +3,10 @@
 	import Player from "./player/Player.svelte";
 </script>
 
-<div id="root"><Player /><List /></div>
+<div id="root">
+	<Player />
+	<List />
+</div>
 
 <style>
 	#root {
@@ -13,5 +16,12 @@
 		justify-content: center;
 		overflow: hidden;
 		gap: 5px;
+	}
+
+	@media only screen and (max-width: 800px) {
+		#root {
+			flex-direction: column;
+			overflow: hidden;
+		}
 	}
 </style>
