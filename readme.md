@@ -1,15 +1,9 @@
-<img src="https://hc-cdn.hel1.your-objectstorage.com/s/v3/3af3c81b1b897a2ab613589e7de1f4e97c51835e_group_2__1_.svg" style="width: 100%;">
+![Banner](https://hc-cdn.hel1.your-objectstorage.com/s/v3/b86072be656a86b466e50837380eb952543c2795_group_16.svg)
 
-<h1>
-  A better, cleaner, and cooler<br>
-  MUSIC PLAYER!<br>
-  <code>The Hackers Music</code>
-</h1>
+## [🎵 Use it now!](https://music.rezhack.xyz/#/app)
 
-<h2>Use it now</h2>
-<a href="https://music.rezhack.xyz" target="_blank">🎵 Use it now!</a>
+## WHY?
 
-<h2>WHY?</h2>
 Okay, answer these:
 
 <details>
@@ -27,51 +21,44 @@ Okay, answer these:
   Nope. Why would I? I like my songs!
 </details>
 
-<br>
-
 <details>
   <summary>Then why do those exist?</summary>
   Wait a minute... yeah, for NO REASON!
 </details>
 
-<br>
+So we made this — a music player that removes all that bloat and makes it cool.
 
-So we made <code>The Hackers Music</code> — a music player that removes all that redundant stuff and makes it cool.
+## Features
 
-<h2>Features</h2>
-<ol>
-  <li>No redundant features no one uses</li>
-  <li>Open source and free</li>
-  <li>No big corporation trying to take all your money</li>
-  <li>Fork and customize it all you want</li>
-  <li>Entirely client-side — uses YouTube as the player, so no backend needed</li>
-  <li>Cool matrix effects</li>
-  <li>And more...</li>
-</ol>
+1. No bloat!
+2. Open source and free  
+3. No big corporation trying to take all your money  
+4. Fork and customize it all you want  
+5. Entirely client-side — uses YouTube as the player, so no backend needed  
+6. Cool matrix effects  
+7. And more...
 
-<h2>Built With</h2>
-<ul>
-  <li>Svelte + Vite</li>
-  <li>YouTube IFrame API</li>
-  <li>LocalStorage for saving your songs</li>
-</ul>
+## Built With
 
-<h2>License</h2>
+- Svelte + Vite  
+- YouTube IFrame API  
+- LocalStorage for saving your songs  
+
+## License
+
 This project is available under a custom open-source license:
-<ul>
-    <li>✅ You can use it</li>
-    <li>✅ You can modify it</li>
-    <li>❌ You cannot say you made it</li>
-    <li>❌ You cannot use it commercially</li>
-    <li>✅ Credit is not required</li>
-</ul>
 
+- ✅ You can use it  
+- ✅ You can modify it  
+- ❌ You cannot say you made it  
+- ❌ You cannot use it commercially  
+- ✅ Credit is not required  
 
-<h2>Contributing</h2>
-Fork it and send a pull request!
+## Contributing
 
+Fork it and send a pull request on [GitHub](https://github.com/RezHackXYZ/The-Hackers).  
 All contributions are welcome — whether you're fixing a color for consistency or adding a feature that totally changes the app!
 
+---
 
-<hr>
-<p>P.S. alt+f4 to summon the matrix 👾</p>
+P.S. `Alt + F4` for a secret 😉
