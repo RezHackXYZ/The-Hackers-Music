@@ -53,7 +53,7 @@
 	<hr />
 	<button onclick={() => {
 		DonePlaylistEdit("na", "");
-	}}>Cancle any changes</button>
+	}}>Cancel any changes</button>
 </div>
 
 <style>
