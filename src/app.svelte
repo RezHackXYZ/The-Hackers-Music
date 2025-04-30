@@ -12,6 +12,10 @@
 	};
 
 	import Nav from "./nav.svelte";
+
+	import { injectSpeedInsights } from "@vercel/speed-insights";
+
+	injectSpeedInsights();
 </script>
 
 <div id="matrix">

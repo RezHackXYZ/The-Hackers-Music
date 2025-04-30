@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@google/genai": "^0.7.0",
+    "@vercel/speed-insights": "^1.2.0",
     "svelte-spa-router": "^4.0.1",
     "youtube-iframe": "^1.0.3"
   }
